@@ -23,6 +23,7 @@ func main() {
 func start(running bool) bool {
 	var checker bool = false
 	var i int = -2
+
 	for running == true {
 		cls()
 		fmt.Println("Hello, and welcome to Qube!")
@@ -30,7 +31,7 @@ func start(running bool) bool {
 		var answer string
 		fmt.Scanln(&answer)
 
-		if answer == "y" {
+		if answer == "y" || answer == "Y" {
 			i = 5
 			cls()
 		} else if answer == "n" {
@@ -42,8 +43,10 @@ func start(running bool) bool {
 		} else {
 			i = -2
 		}
+
 		if i == -2 {
 		}
+
 		for i > 0 {
 			fmt.Print("Please enter username: ")
 			var inUsern string
@@ -65,6 +68,7 @@ func start(running bool) bool {
 				i--
 			}
 		}
+
 		if i == 0 {
 			cls()
 			fmt.Println("Too many tries!")
@@ -72,11 +76,12 @@ func start(running bool) bool {
 			break
 		}
 	}
+
 	for running == false {
 		checker = false
 		break
 	}
-	fmt.Println(checker)
+
 	return checker
 }
 
