@@ -11,10 +11,6 @@ type auth struct {
 	passw string
 }
 
-func main() {
-	Intro()
-}
-
 func Intro() {
 	switch start(true) {
 	case true:
