@@ -11,7 +11,11 @@ type auth struct {
 	passw string
 }
 
-func intro() {
+func main() {
+	Intro()
+}
+
+func Intro() {
 	switch start(true) {
 	case true:
 		fmt.Println("Welcome!")

@@ -1,17 +1,17 @@
 package main
 
 import (
-	"Qube/Intro"
 	"fmt"
+
+	"github.com/Carsen/Qube/Intro"
 )
 
 func main() {
 
-	switch Intro.intro() {
+	switch Intro.Intro() {
 	case true:
 		fmt.Println("Congrats!")
 	case false:
 		break
 	}
 }
-
