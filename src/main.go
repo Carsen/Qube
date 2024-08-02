@@ -1,5 +1,6 @@
 package main
 
+import "C"
 import (
 	"crypto/sha256"
 	"encoding/hex"
@@ -54,8 +55,10 @@ func start(running bool) bool {
 			fmt.Print("Please enter password: ")
 			var inPassw string
 			fmt.Scanln(&inPassw)
+
 			db := hashInput("Carsen", "Ebert")
 			usr := hashInput(inUsern, inPassw)
+
 			switch authCompare(db, usr) {
 			case true:
 				cls()
@@ -114,5 +117,5 @@ func authCompare(a auth, b auth) bool {
 }
 
 func cls() {
-	fmt.Print("\033[2J")
+	C.clear()
 }
