@@ -2,14 +2,16 @@ package qDB
 
 import (
 	"github.com/Carsen/Qube"
-	"github.com/tidwall/buntdb"
+	"go.mills.io/bitcask/v2"
+
 	"log"
 )
 
 func openDB() {
-	db, err := buntdb.Open("auth.db")
-	if err != nil {
-		log.Fatal(err)
+	opts := []Option{
+		WithMaxKeySize(32)
+		WithMaxValueSize(32)
 	}
+	db, _ := bitcask.Open("./db", opts)
 	defer db.Close()
 }
