@@ -116,5 +116,4 @@ func authCompare(a auth, b auth) bool {
 }
 
 func cls() {
-	C.clear()
 }
