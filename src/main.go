@@ -4,6 +4,9 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
+	"os"
+	"os/exec"
+	"syscall"
 )
 
 type auth struct {
@@ -116,4 +119,28 @@ func authCompare(a auth, b auth) bool {
 }
 
 func cls() {
+	SysCmd("clear")
+}
+
+func SysCmd(cmd string) int {
+	c := exec.Command("sh", "-c", cmd)
+	c.Stdin = os.Stdin
+	c.Stdout = os.Stdout
+	c.Stderr = os.Stderr
+	err := c.Run()
+
+	if err == nil {
+		return 0
+	}
+
+	if ws, ok := c.ProcessState.Sys().(syscall.WaitStatus); ok {
+		if ws.Exited() {
+			return ws.ExitStatus()
+		}
+
+		if ws.Signaled() {
+			return -int(ws.Signal())
+		}
+	}
+	return -1
 }
