@@ -3,7 +3,6 @@ module github.com/Carsen/Qube/qDB
 go 1.22.5
 
 require (
-	github.com/Carsen/Qube v0.0.0-20240802173029-ba48c1162335 // indirect
 	github.com/tidwall/btree v1.4.2 // indirect
 	github.com/tidwall/buntdb v1.3.1 // indirect
 	github.com/tidwall/gjson v1.14.3 // indirect

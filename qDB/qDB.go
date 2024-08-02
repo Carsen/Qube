@@ -1,12 +1,12 @@
 package qDB
 
-import(
-	"log"
+import (
 	"github.com/Carsen/Qube"
 	"github.com/tidwall/buntdb"
+	"log"
 )
 
-func openDB(){
+func openDB() {
 	db, err := buntdb.Open("auth.db")
 	if err != nil {
 		log.Fatal(err)
