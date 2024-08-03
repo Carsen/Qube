@@ -1,4 +1,4 @@
-package QDB
+package QbDB
 
 import (
 	"bytes"

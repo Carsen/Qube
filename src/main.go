@@ -3,7 +3,7 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
-	"github.com/Carsen/Qube/QDB"
+	"github.com/Carsen/Qube/QbDB"
 )
 
 func main() {

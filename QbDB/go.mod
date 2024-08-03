@@ -1,4 +1,4 @@
-module github.com/Carsen/Qube/QDB
+module github.com/Carsen/Qube/QbDB
 
 go 1.22.5
 
