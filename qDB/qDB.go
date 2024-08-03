@@ -1,7 +1,6 @@
 package qDB
 
 import (
-	"github.com/Carsen/Qube"
 	"go.mills.io/bitcask/v2"
 
 	"log"

@@ -123,7 +123,7 @@ func authCompare(a auth, b auth) bool {
 }
 
 func cls() {
-	SysCmd("clear")
+	SysCmd("cls")
 }
 
 func SysCmd(cmd string) int {
