@@ -2,32 +2,23 @@ package main
 
 import (
 	"crypto/sha256"
-	"encoding/hex"
 	"fmt"
 	"github.com/Carsen/Qube/qDB"
-	"os"
-	"os/exec"
-	"syscall"
 )
 
-type auth struct {
-	usern string
-	passw string
-}
-
 func main() {
-	switch start(true) {
+	switch login(true) {
 	case true:
 		fmt.Println("Welcome!")
+
 	case false:
 		fmt.Println("Goodbye")
 	}
 }
 
-func start(running bool) bool {
+func login(running bool) bool {
 	var checker bool = false
 	var i int = -2
-
 	for running == true {
 		cls()
 		fmt.Println("Hello, and welcome to Qube!")
@@ -35,10 +26,10 @@ func start(running bool) bool {
 		var answer string
 		fmt.Scanln(&answer)
 
-		if answer == "y" || answer == "Y" {
+		if answer == "y" {
 			i = 5
 			cls()
-		} else if answer == "n" || answer == "N" {
+		} else if answer == "n" {
 			cls()
 			fmt.Println("I'm sorry to see you go so soon. We hope to see you back!")
 			i = -1
@@ -47,28 +38,33 @@ func start(running bool) bool {
 		} else {
 			i = -2
 		}
-
 		if i == -2 {
 		}
-
 		for i > 0 {
 			fmt.Print("Please enter username: ")
 			var inUsern string
+			var hashUsern []byte
 			fmt.Scanln(&inUsern)
-			fmt.Print("Please enter password: ")
-			var inPassw string
-			fmt.Scanln(&inPassw)
+			hashUsern = hashInput(inUsern)
 
-			qDB.openDB()
-
-			db := hashInput("Carsen", "Ebert")
-			usr := hashInput(inUsern, inPassw)
-
-			switch authCompare(db, usr) {
+			switch qDB.checkForKey(hashUsern) {
 			case true:
-				cls()
-				checker = true
-				return checker
+				fmt.Print("Please enter password: ")
+				var inPassw string
+				var hashPassw []byte
+				fmt.Scanln(&inPassw)
+				hashPassw = hashInput(inPassw)
+
+				switch qDB.valueMatchesKey(hashUsern, hashPassw) {
+				case true:
+					cls()
+					checker = true
+					return checker
+				case false:
+					cls()
+					fmt.Println("Try again!")
+					i--
+				}
 
 			case false:
 				cls()
@@ -76,7 +72,6 @@ func start(running bool) bool {
 				i--
 			}
 		}
-
 		if i == 0 {
 			cls()
 			fmt.Println("Too many tries!")
@@ -84,66 +79,22 @@ func start(running bool) bool {
 			break
 		}
 	}
-
 	for running == false {
 		checker = false
 		break
 	}
-
+	fmt.Println(checker)
 	return checker
 }
 
-func hashInput(u string, p string) auth {
-	var tmpUsern string
-	var tmpPassw string
-
+func hashInput(u string) []byte {
 	hash := sha256.New()
+	defer hash.Reset()
 	hash.Write([]byte(u))
-	tmpUsern = hex.EncodeToString(hash.Sum(nil))
-	hash.Reset()
-	hash.Write([]byte(p))
-	tmpPassw = hex.EncodeToString(hash.Sum(nil))
-	hash.Reset()
-
-	s := auth{
-		usern: tmpUsern,
-		passw: tmpPassw,
-	}
-	return s
-}
-func authCompare(a auth, b auth) bool {
-	if a == b {
-		return true
-	} else if a != b {
-		return false
-	} else {
-		return false
-	}
+	b := hash.Sum(nil)
+	return b
 }
 
 func cls() {
-	SysCmd("clear")
-}
-
-func SysCmd(cmd string) int {
-	c := exec.Command("sh", "-c", cmd)
-	c.Stdin = os.Stdin
-	c.Stdout = os.Stdout
-	c.Stderr = os.Stderr
-	err := c.Run()
-
-	if err == nil {
-		return 0
-	}
-
-	if ws, ok := c.ProcessState.Sys().(syscall.WaitStatus); ok {
-		if ws.Exited() {
-			return ws.ExitStatus()
-		}
-
-		if ws.Signaled() {
-			return -int(ws.Signal())
-		}
-	}
-	return -1
+	fmt.Print("\033[2J")
 }

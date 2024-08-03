@@ -2,15 +2,10 @@ package qDB
 
 import (
 	"go.mills.io/bitcask/v2"
-
-	"log"
 )
 
-func openDB() {
-	opts := []Option{
-		MaxKeySize(32),
-		MaxValueSize(32),
-	}
-	db, _ := bitcask.Open("./db", opts)
+func checkForKey(usrk []byte) {
+	db, _ := bitcask.Open("./db")
 	defer db.Close()
+	db.Has(usrk)
 }
