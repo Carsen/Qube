@@ -7,7 +7,7 @@ import (
 	"go.mills.io/bitcask/v2"
 )
 
-func checkForKey(usrk []byte) bool {
+func CheckForKey(usrk []byte) bool {
 	db, err := bitcask.Open("./db")
 	defer db.Close()
 	if err == nil {
@@ -19,7 +19,7 @@ func checkForKey(usrk []byte) bool {
 	}
 }
 
-func valueMatchesKey(userk []byte, userp []byte) bool {
+func ValueMatchesKey(userk []byte, userp []byte) bool {
 	var checker bool = false
 	db, err1 := bitcask.Open("./db")
 	defer db.Close()

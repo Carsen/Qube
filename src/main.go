@@ -47,7 +47,7 @@ func login(running bool) bool {
 			fmt.Scanln(&inUsern)
 			hashUsern = hashInput(inUsern)
 
-			switch qDB.checkForKey(hashUsern) {
+			switch qDB.CheckForKey(hashUsern) {
 			case true:
 				fmt.Print("Please enter password: ")
 				var inPassw string
@@ -55,7 +55,7 @@ func login(running bool) bool {
 				fmt.Scanln(&inPassw)
 				hashPassw = hashInput(inPassw)
 
-				switch qDB.valueMatchesKey(hashUsern, hashPassw) {
+				switch qDB.ValueMatchesKey(hashUsern, hashPassw) {
 				case true:
 					cls()
 					checker = true
