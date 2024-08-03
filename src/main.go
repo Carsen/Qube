@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
+	"github.com/Carsen/Qube/qDB"
 	"os"
 	"os/exec"
 	"syscall"
@@ -57,6 +58,8 @@ func start(running bool) bool {
 			fmt.Print("Please enter password: ")
 			var inPassw string
 			fmt.Scanln(&inPassw)
+
+			qDB.openDB()
 
 			db := hashInput("Carsen", "Ebert")
 			usr := hashInput(inUsern, inPassw)

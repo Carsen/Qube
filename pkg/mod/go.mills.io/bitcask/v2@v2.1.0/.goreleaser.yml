@@ -1,0 +1,39 @@
+---
+builds:
+  -
+    id: bitcask
+    binary: bitcask
+    main: ./cmd/bitcask
+    flags: -tags "static_build"
+    ldflags: -w -X go.mills.io/bitcask/v2/internal.Version={{.Version}} -X go.mills.io/bitcask/v2/internal.Commit={{.Commit}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+  -
+    id: bitcaskd
+    binary: bitcaskd
+    main: ./cmd/bitcaskd
+    flags: -tags "static_build"
+    ldflags: -w -X go.mills.io/bitcask/v2/internal.Version={{.Version}} -X go.mills.io/bitcask/v2/internal.Commit={{.Commit}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+signs:
+  - artifacts: checksum
+release:
+  gitea:
+    owner: prologic
+    name: bitcask
+  draft: true
+gitea_urls:
+  api: https://git.mills.io/api/v1/
