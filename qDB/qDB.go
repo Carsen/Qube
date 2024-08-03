@@ -8,8 +8,8 @@ import (
 
 func openDB() {
 	opts := []Option{
-		WithMaxKeySize(32),
-		WithMaxValueSize(32)
+		MaxKeySize(32),
+		MaxValueSize(32),
 	}
 	db, _ := bitcask.Open("./db", opts)
 	defer db.Close()
