@@ -2,7 +2,7 @@ module github.com/Carsen/Qube
 
 go 1.22.5
 
-require github.com/Carsen/Qube/qDB v0.0.0-20240803222711-170c0a2a5665
+require github.com/Carsen/Qube/QDB v0.0.0-20240803222711-170c0a2a5665
 
 require (
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
