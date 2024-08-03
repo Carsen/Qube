@@ -7,8 +7,6 @@ import (
 	"os"
 	"os/exec"
 	"syscall"
-
-	"github.com/Carsen/Qube/qDB"
 )
 
 type auth struct {
@@ -59,8 +57,6 @@ func start(running bool) bool {
 			fmt.Print("Please enter password: ")
 			var inPassw string
 			fmt.Scanln(&inPassw)
-
-			qDB.makeDB()
 
 			db := hashInput("Carsen", "Ebert")
 			usr := hashInput(inUsern, inPassw)
@@ -123,7 +119,7 @@ func authCompare(a auth, b auth) bool {
 }
 
 func cls() {
-	SysCmd("cls")
+	SysCmd("clear")
 }
 
 func SysCmd(cmd string) int {
