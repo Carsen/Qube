@@ -5,12 +5,19 @@ import (
 	"net"
 )
 
-func GetInterfaces() {
-	intf, err := net.Interfaces()
-
-	if err != nil {
+func IfaceAmt() int{
+	intfc, err := net.Interfaces()
+	if err != nil{
 		log.Fatal(err)
 	}
 
-	return intf
+	for _, Iface := range intfc {
+//		addrs, err := Iface.Addrs()
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+		return Iface.Index
+	}
+
+	return 0
 }

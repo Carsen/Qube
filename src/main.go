@@ -14,7 +14,8 @@ func main() {
 	case true:
 		box := tui.NewHBox(
 			tui.NewSpacer(),
-			tui.NewPadder(1, 0)
+			tui.NewPadder(1, 0),
+			tui.SetBorder(true),
 			tui.NewLabel("Qube"),
 		)
 
@@ -27,7 +28,7 @@ func main() {
 
 		if err := ui.Run(); err != nil {
 			log.Fatal(err)
-			}
+		}
 	case false:
 		fmt.Println("Goodbye!")
 	}
