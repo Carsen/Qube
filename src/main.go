@@ -10,6 +10,7 @@ import (
 func main() {
 	switch login(true) {
 	case true:
+		cls()
 		fmt.Println("Welcome!")
 
 	case false:
@@ -71,8 +72,10 @@ func login(running bool) bool {
 				var mkAcc string
 				var runChk int
 				runChk = 5
+				cls()
+				fmt.Printf("It looks like you're new here!(Username: '%s')\n", inUsern)
 				for runChk > 0 {
-					fmt.Println("It looks like you're new here! Would you like to create an account? y/n")
+					fmt.Println("Would you like to create an account? y/n")
 					fmt.Scanln(&mkAcc)
 					if mkAcc == "y" || mkAcc == "Y" {
 						fmt.Print("Please enter your new password: ")
@@ -90,9 +93,12 @@ func login(running bool) bool {
 						} else if inPassw != matchPassw {
 							runChk--
 							cls()
-							fmt.Print("Try again!")
+							fmt.Println("Try again!")
 						}
 					} else if mkAcc == "n" || mkAcc == "N" {
+						cls()
+						runChk--
+						i--
 						break
 					} else {
 						cls()
