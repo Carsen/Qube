@@ -4,7 +4,7 @@ go 1.22.5
 
 require (
 	github.com/Carsen/Qube/Login v0.0.0-20240804022631-ee527a56b12c
-	github.com/Carsen/Qube/QCom v0.0.0-20240804164156-92b187d939a9
+	github.com/Carsen/Qube/QCom v0.0.0-20240804164409-f308b1a40823
 	github.com/gdamore/tcell/v2 v2.7.1
 	github.com/rivo/tview v0.0.0-20240728114935-65571ae51e71
 )
