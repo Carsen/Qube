@@ -71,10 +71,10 @@ func login(running bool) bool {
 				var mkAcc string
 				var runChk int
 				runChk = 5
-				for runChk > 0{
+				for runChk > 0 {
 					fmt.Println("It looks like you're new here! Would you like to create an account? y/n")
 					fmt.Scanln(&mkAcc)
-					if mkAcc == "y" || mkAcc == "Y"{
+					if mkAcc == "y" || mkAcc == "Y" {
 						fmt.Print("Please enter your new password: ")
 						var inPassw string
 						fmt.Scanln(&inPassw)
@@ -84,17 +84,17 @@ func login(running bool) bool {
 						if inPassw == matchPassw {
 							var hashPassw []byte
 							hashPassw = hashInput(inPassw)
-							QbDB.NewKeyValue(hashUsern, hashPassw)
+							QbDB.NewDBEntry(hashUsern, hashPassw)
 							checker = true
 							return checker
-						}else if inPassw != matchPassw {
+						} else if inPassw != matchPassw {
 							runChk--
 							cls()
 							fmt.Print("Try again!")
 						}
-					}else if mkAcc == "n" || mkAcc == "N"{
+					} else if mkAcc == "n" || mkAcc == "N" {
 						break
-					}else {
+					} else {
 						cls()
 						fmt.Println("Bad Format! Try again.")
 					}

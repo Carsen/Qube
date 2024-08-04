@@ -40,7 +40,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 	}
 }
 
-func NewKeyValue(userk []byte, userp []byte) {
+func NewDBEntry(userk []byte, userp []byte) {
 	db, err := bitcask.Open("./db")
 	defer db.Close()
 	if err == nil {
