@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
+
 	"github.com/Carsen/Qube/QbDB"
 )
 
@@ -46,7 +47,7 @@ func login(running bool) bool {
 			var hashUsern []byte
 			fmt.Scanln(&inUsern)
 			hashUsern = hashInput(inUsern)
-			
+
 			switch QbDB.CheckForKey(hashUsern) {
 			case true:
 				fmt.Print("Please enter password: ")
@@ -102,6 +103,7 @@ func login(running bool) bool {
 					i = 0
 				}
 			}
+		}
 		if i == 0 {
 			cls()
 			fmt.Println("Too many tries!")
@@ -111,7 +113,7 @@ func login(running bool) bool {
 	}
 	for running == false {
 		checker = false
-		break
+		return checker
 	}
 	return checker
 }
