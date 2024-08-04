@@ -3,6 +3,7 @@ package Login
 import (
 	"crypto/sha256"
 	"fmt"
+	"os/exec"
 
 	"github.com/Carsen/Qube/QbDB"
 )
@@ -122,5 +123,5 @@ func hashInput(u string) []byte {
 }
 
 func cls() {
-	fmt.Print("\033[2J")
+	exec.Command("clear")
 }
