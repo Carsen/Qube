@@ -21,10 +21,10 @@ func main() {
 				SetTextAlign(tview.AlignCenter).
 				SetText(text)
 		}
-		primTextArea := func(text string) tview.Primitive {
-			return tview.NewTextArea().
-				
-		}
+		//		primTextArea := func(text string) tview.Primitive {
+		//			return tview.NewTextArea().
+		//
+		//		}
 
 		grid := tview.NewGrid().
 			SetRows(1, 0, 20).

@@ -3,6 +3,7 @@ package QCom
 import (
 	"log"
 	"net"
+	"strconv"
 )
 
 func IfaceAmt() int {
@@ -16,7 +17,8 @@ func IfaceAmt() int {
 		//		if err != nil {
 		//			log.Fatal(err)
 		//		}
-		return Iface.Index
+		i := strconv.Itoa(Iface.Index)
+		return i
 	}
 
 	return 0
