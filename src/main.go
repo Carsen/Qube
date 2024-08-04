@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strconv"
 
 	"github.com/Carsen/Qube/Login"
 	"github.com/Carsen/Qube/QCom"
@@ -31,7 +32,7 @@ func main() {
 			SetColumns(30, 0, 30).
 			SetBorders(true).
 			AddItem(primTextView("Qube Network Tool"), 0, 0, 1, 3, 0, 0, false).
-			AddItem(primTextView(QCom.IfaceAmt()), 2, 0, 1, 3, 0, 0, false)
+			AddItem(primTextView(strconv.Iota(QCom.IfaceAmt())), 2, 0, 1, 3, 0, 0, false)
 
 		grid.AddItem(primTextView("Side Tool"), 0, 0, 0, 0, 0, 0, false).
 			AddItem(primTextView("Main Tool"), 1, 0, 1, 3, 0, 0, false).
