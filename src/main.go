@@ -5,28 +5,15 @@ import (
 	"log"
 
 	"github.com/Carsen/Qube/Login"
-	"github.com/Carsen/Qube/QCom"
-	"github.com/marcusolsson/tui-go"
+	"github.com/rivo/tview"
 )
 
 func main() {
 	switch Login.Login(true) {
 	case true:
-		box := tui.NewHBox(
-			tui.NewSpacer(),
-			tui.NewPadder(1, 0),
-			tui.SetBorder(true),
-			tui.NewLabel("Qube"),
-		)
+		app := tview.NewApplication()
 
-		ui, err := tui.New(box)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		ui.SetKeybinding("Esc", func() { ui.Quit() })
-
-		if err := ui.Run(); err != nil {
+		if err := app.SetRoot(tview.NewBox(), true).EnableMouse(true).Run(); err != nil {
 			log.Fatal(err)
 		}
 	case false:
