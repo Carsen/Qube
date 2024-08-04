@@ -46,8 +46,8 @@ func login(running bool) bool {
 			var hashUsern []byte
 			fmt.Scanln(&inUsern)
 			hashUsern = hashInput(inUsern)
-
-			switch qDB.CheckForKey(hashUsern) {
+			
+			switch QbDB.CheckForKey(hashUsern) {
 			case true:
 				fmt.Print("Please enter password: ")
 				var inPassw string
@@ -55,7 +55,7 @@ func login(running bool) bool {
 				fmt.Scanln(&inPassw)
 				hashPassw = hashInput(inPassw)
 
-				switch qDB.ValueMatchesKey(hashUsern, hashPassw) {
+				switch QbDB.ValueMatchesKey(hashUsern, hashPassw) {
 				case true:
 					cls()
 					checker = true
@@ -67,11 +67,41 @@ func login(running bool) bool {
 				}
 
 			case false:
-				cls()
-				fmt.Println("Try again!")
-				i--
+				var mkAcc string
+				var runChk int
+				runChk = 5
+				for runChk > 0{
+					fmt.Println("It looks like you're new here! Would you like to create an account? y/n")
+					fmt.Scanln(&mkAcc)
+					if mkAcc == "y" || mkAcc == "Y"{
+						fmt.Print("Please enter your new password: ")
+						var inPassw string
+						fmt.Scanln(&inPassw)
+						fmt.Print("Please confirm password: ")
+						var matchPassw string
+						fmt.Scanln(&matchPassw)
+						if inPassw == matchPassw {
+							var hashPassw []byte
+							hashPassw = hashInput(inPassw)
+							QbDB.NewKeyValue(hashUsern, hashPassw)
+							checker = true
+							return checker
+						}else if inPassw != matchPassw {
+							runChk--
+							cls()
+							fmt.Print("Try again!")
+						}
+					}else if mkAcc == "n" || mkAcc == "N"{
+						break
+					}else {
+						cls()
+						fmt.Println("Bad Format! Try again.")
+					}
+				}
+				if runChk == 0 {
+					i = 0
+				}
 			}
-		}
 		if i == 0 {
 			cls()
 			fmt.Println("Too many tries!")
@@ -83,7 +113,6 @@ func login(running bool) bool {
 		checker = false
 		break
 	}
-	fmt.Println(checker)
 	return checker
 }
 

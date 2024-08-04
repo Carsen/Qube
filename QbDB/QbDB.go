@@ -39,3 +39,13 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 		return checker
 	}
 }
+
+func NewKeyValue(userk []byte, userp []byte) {
+	db, err := bitcask.Open("./db")
+	defer db.Close()
+	if err == nil {
+		db.Put(userk, userp)
+	} else {
+		log.Fatal(err)
+	}
+}
