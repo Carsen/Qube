@@ -5,17 +5,17 @@ import (
 	"net"
 )
 
-func IfaceAmt() int{
+func IfaceAmt() int {
 	intfc, err := net.Interfaces()
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	for _, Iface := range intfc {
-//		addrs, err := Iface.Addrs()
-//		if err != nil {
-//			log.Fatal(err)
-//		}
+		//		addrs, err := Iface.Addrs()
+		//		if err != nil {
+		//			log.Fatal(err)
+		//		}
 		return Iface.Index
 	}
 
