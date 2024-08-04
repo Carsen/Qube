@@ -1,5 +1,7 @@
 github.com/Carsen/Qube/Login v0.0.0-20240804022631-ee527a56b12c h1:Hg5zKDO42iseKPgg9wbIRS0bVAC3jfDAMHnUg+n/SFY=
 github.com/Carsen/Qube/Login v0.0.0-20240804022631-ee527a56b12c/go.mod h1:mFKDLI1iE+ATvcwjBmMHSCh/F/PztAWLZx3wnOG2f4Q=
+github.com/Carsen/Qube/QCom v0.0.0-20240804164156-92b187d939a9 h1:RIa96amXjhquCACBhXvPl0niMG5JtpPZcJ7njh6u5xw=
+github.com/Carsen/Qube/QCom v0.0.0-20240804164156-92b187d939a9/go.mod h1:0vQ7JACS41VIHbChAXXSIf/8SScZSpItybZszLlQee0=
 github.com/Carsen/Qube/QbDB v0.0.0-20240804001514-5eabc43812e9 h1:Xd1gRDtBS0MVvSohZ292RcyahdBC1meQE6oWxUhPBc0=
 github.com/Carsen/Qube/QbDB v0.0.0-20240804001514-5eabc43812e9/go.mod h1:p46XaQbQhoMV1MVRivB7Eykih1/qSn2UOj2aQVYZfRQ=
 github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 h1:uHogIJ9bXH75ZYrXnVShHIyywFiUZ7OOabwd9Sfd8rw=
