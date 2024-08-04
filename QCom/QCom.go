@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-func IfaceAmt() int {
+func IfaceID() int {
 	intfc, err := net.Interfaces()
 	if err != nil {
 		log.Fatal(err)

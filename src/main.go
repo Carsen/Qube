@@ -32,15 +32,19 @@ func main() {
 			SetColumns(30, 0, 30).
 			SetBorders(true).
 			AddItem(primTextView("Qube Network Tool"), 0, 0, 1, 3, 0, 0, false).
-			AddItem(primTextView(strconv.Iota(QCom.IfaceAmt())), 2, 0, 1, 3, 0, 0, false)
+			//			AddItem(primTextView(strconv.Itoa(QCom.IfaceAmt())), 2, 0, 1, 3, 0, 0, false)
 
-		grid.AddItem(primTextView("Side Tool"), 0, 0, 0, 0, 0, 0, false).
+			grid.AddItem(primTextView("Side Tool"), 0, 0, 0, 0, 0, 0, false).
 			AddItem(primTextView("Main Tool"), 1, 0, 1, 3, 0, 0, false).
 			AddItem(primTextView("Extra Tool"), 0, 0, 0, 0, 0, 0, false)
 
 		grid.AddItem(primTextView("Side Tool"), 1, 0, 1, 1, 0, 100, false).
 			AddItem(primTextView("Main Tool"), 1, 1, 1, 1, 0, 100, false).
 			AddItem(primTextView("Extra Tool"), 1, 2, 1, 1, 0, 100, false)
+
+		grid.AddItem(primTextView(strconv.Itoa(QCom.IfaceID())), 2, 0, 1, 2, 0, 0, false).
+			AddItem(primTextView("Carsen"), 2, 3, 1, 1, 0, 0, false)
+
 		if err := app.SetRoot(grid, true).SetFocus(grid).Run(); err != nil {
 			log.Fatal(err)
 		}
