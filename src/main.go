@@ -84,7 +84,7 @@ func login(running bool) bool {
 						if inPassw == matchPassw {
 							var hashPassw []byte
 							hashPassw = hashInput(inPassw)
-							QbDB.NewDBEntry(hashUsern, hashPassw)
+							QbDB.NewKeyValue(hashUsern, hashPassw)
 							checker = true
 							return checker
 						} else if inPassw != matchPassw {
